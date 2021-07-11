@@ -1,0 +1,40 @@
+<div class="formcontainer" novalidate *ngIf="items.length != 0"> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form" fxLayout="column" fxFlex="100">
+  
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <mat-select (selectionChange)="showFields($event)" formControlName="item">
+            <mat-option *ngFor="let name of names" [value]="name"> {{name}} </mat-option>
+        </mat-select>
+        <mat-error>
+          Please choose an item.
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Cost</mat-label>
+        <span matPrefix>$&nbsp;</span>
+        <input matInput formControlName="cost" [formControl]="formGroup.controls['cost']">
+        <mat-error>
+          Please enter valid cost in number.
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="5" formControlName="description"></textarea>
+        <mat-error>
+          Required field, must be between 3 and 10 characters.
+        </mat-error>
+      </mat-form-field>
+  
+      <div align="center" class="form-button">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Modify Item</button>
+      </div>
+
+      <div align="center">
+        <h3>{{message}}</h3>
+      </div>
+  
+    </form>
+  </div>

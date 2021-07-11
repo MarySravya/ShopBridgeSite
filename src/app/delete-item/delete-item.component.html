@@ -1,0 +1,23 @@
+<div class="formcontainer" novalidate *ngIf="items.length != 0"> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form" fxLayout="column" fxFlex="100">
+  
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <mat-select formControlName="item">
+            <mat-option *ngFor="let item of items" [value]="item.item"> {{item.item}} </mat-option>
+        </mat-select>
+        <mat-error>
+          Please choose an item.
+        </mat-error>
+      </mat-form-field>
+  
+      <div align="center" class="form-button">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Delete Item</button>
+      </div>
+
+      <div align="center">
+        <h3>{{message}}</h3>
+      </div>
+  
+    </form>
+  </div>

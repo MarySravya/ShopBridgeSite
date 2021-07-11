@@ -1,0 +1,9 @@
+.container {
+    border-radius: 15px;
+}
+mat-footer-cell {
+    font-weight: 500;
+}
+mat-header-cell {
+    font-weight: 900;
+}

@@ -1,0 +1,31 @@
+<div class="mat-elevation-z8" class="container">
+    <mat-table [dataSource]="dataSource">
+  
+        <!-- Item Column -->
+        <ng-container matColumnDef="item">
+            <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{transaction.item}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> Total </mat-footer-cell>
+        </ng-container>
+
+        <!-- Cost Column -->
+        <ng-container matColumnDef="cost">
+            <mat-header-cell *matHeaderCellDef> Cost </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </mat-footer-cell>
+        </ng-container>
+
+        <!-- Description Column -->
+        <ng-container matColumnDef="description">
+            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+            <mat-cell *matCellDef="let transaction"> {{transaction.description}} </mat-cell>
+            <mat-footer-cell *matFooterCellDef> - </mat-footer-cell>
+        </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
+    </mat-table>
+  
+<mat-paginator [pageSizeOptions]="[3, 6, 12]" showFirstLastButtons></mat-paginator>
+</div>
