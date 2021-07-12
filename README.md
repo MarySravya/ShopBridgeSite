@@ -16,4 +16,5 @@ Run `ng build` to build the project.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via Karma.
+Run `ng test --code-coverage` to execute the unit tests via Karma.
+Open `coverage/ShopBridge/index.html` file to view the code coverage percent.
